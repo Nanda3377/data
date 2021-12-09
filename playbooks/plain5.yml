@@ -1,0 +1,12 @@
+---
+- hosts: my
+  connection: ssh
+  gather_facts: true
+  become_user: root
+  vars_prompt:
+    - name: some
+      promt: enter the package
+  tasks:
+    - name: installing packages
+      apt:  name='{{ some }}' state=present
+        
