@@ -1,0 +1,445 @@
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ touch q1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "commit1"
+0[main 676d260] commit1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 q1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ echo "hi " >> q1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+warning: LF will be replaced by CRLF in q1.
+The file will have its original line endings in your working directory
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "commit2"
+[main e9cea5e] commit2
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ echo "wlcm " >> q1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+warning: LF will be replaced by CRLF in q1.
+The file will have its original line endings in your working directory
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "commit3"
+[main 47d6b0a] commit3
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ gi log --oneline
+bash: gi: command not found
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git log --oneline
+47d6b0a (HEAD -> main) commit3
+e9cea5e commit2
+676d260 commit1
+0e92546 edited file
+5e95d36 this is a empty file
+005306c (origin/main) i edit a.txt
+fe04d0a a.txt
+1640031 (b1) a.txt
+c722030 a.txt
+fde61eb c.txt
+4251924 b.txt
+c9ae31f a.txt
+1216c38 created 1.txt
+cc501d6 b1 file
+e698ca5 i created abc.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git revert 47d6b0a
+[main 3b6bef9] i am deleting latest content
+ 1 file changed, 1 deletion(-)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ cat q1
+hi
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git log --oneline
+3b6bef9 (HEAD -> main) i am deleting latest content
+47d6b0a commit3
+e9cea5e commit2
+676d260 commit1
+0e92546 edited file
+5e95d36 this is a empty file
+005306c (origin/main) i edit a.txt
+fe04d0a a.txt
+1640031 (b1) a.txt
+c722030 a.txt
+fde61eb c.txt
+4251924 b.txt
+c9ae31f a.txt
+1216c38 created 1.txt
+cc501d6 b1 file
+e698ca5 i created abc.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git revert 3b6bef9
+[main 5f67a30] i am getting my data again
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git log --oneline
+5f67a30 (HEAD -> main) i am getting my data again
+3b6bef9 i am deleting latest content
+47d6b0a commit3
+e9cea5e commit2
+676d260 commit1
+0e92546 edited file
+5e95d36 this is a empty file
+005306c (origin/main) i edit a.txt
+fe04d0a a.txt
+1640031 (b1) a.txt
+c722030 a.txt
+fde61eb c.txt
+4251924 b.txt
+c9ae31f a.txt
+1216c38 created 1.txt
+cc501d6 b1 file
+e698ca5 i created abc.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ cat q1
+hi
+wlcm
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ touch w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "cmt1"
+[main f31708e] cmt1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ echo "hi " >> w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+warning: LF will be replaced by CRLF in w1.
+The file will have its original line endings in your working directory
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "cmt2"
+[main 87333b2] cmt2
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ echo "hru " >> w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+warning: LF will be replaced by CRLF in w1.
+The file will have its original line endings in your working directory
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "cmt3"
+[main 56ae84d] cmt3
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ echo "wlcm " >> w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+warning: LF will be replaced by CRLF in w1.
+The file will have its original line endings in your working directory
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "cmt4"
+[main 1c65785] cmt4
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git log --oneline
+1c65785 (HEAD -> main) cmt4
+56ae84d cmt3
+87333b2 cmt2
+f31708e cmt1
+5f67a30 i am getting my data again
+3b6bef9 i am deleting latest content
+47d6b0a commit3
+e9cea5e commit2
+676d260 commit1
+0e92546 edited file
+5e95d36 this is a empty file
+005306c (origin/main) i edit a.txt
+fe04d0a a.txt
+1640031 (b1) a.txt
+c722030 a.txt
+fde61eb c.txt
+4251924 b.txt
+c9ae31f a.txt
+1216c38 created 1.txt
+cc501d6 b1 file
+e698ca5 i created abc.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git checkout 87333b2
+Note: switching to '87333b2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 87333b2 cmt2
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ git log --oneline
+87333b2 (HEAD) cmt2
+f31708e cmt1
+5f67a30 i am getting my data again
+3b6bef9 i am deleting latest content
+47d6b0a commit3
+e9cea5e commit2
+676d260 commit1
+0e92546 edited file
+5e95d36 this is a empty file
+005306c (origin/main) i edit a.txt
+fe04d0a a.txt
+1640031 (b1) a.txt
+c722030 a.txt
+fde61eb c.txt
+4251924 b.txt
+c9ae31f a.txt
+1216c38 created 1.txt
+cc501d6 b1 file
+e698ca5 i created abc.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ cat w1
+hi
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ cp w1 backup.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ ls
+1.txt  123.txt  a.txt  abc.txt  b.txt  backup.txt  branch1.txt  c.txt  q1  w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ cat backup.txt
+hi
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ git checkout 87333b2
+HEAD is now at 87333b2 cmt2
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo ((87333b2...))
+$ git checkout main
+Previous HEAD position was 87333b2 cmt2
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 11 commits.
+  (use "git push" to publish your local commits)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ cat w1
+hi
+hru
+wlcm
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ cat backup.txt
+hi
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git push
+Enumerating objects: 26, done.
+Counting objects: 100% (26/26), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (25/25), 2.00 KiB | 291.00 KiB/s, done.
+Total 25 (delta 11), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (11/11), completed with 1 local object.
+To https://github.com/vinayvikas/devrepo.git
+   005306c..1c65785  main -> main
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git branch -a
+  b1
+* main
+  remotes/origin/main
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        backup.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git fetch main
+fatal: 'main' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git fetch origin main
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 635 bytes | 5.00 KiB/s, done.
+From https://github.com/vinayvikas/devrepo
+ * branch            main       -> FETCH_HEAD
+   1c65785..70eac47  main       -> origin/main
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ ls
+1.txt  123.txt  a.txt  abc.txt  b.txt  backup.txt  branch1.txt  c.txt  q1  w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ cat w1
+hi
+hru
+wlcm
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ vi 1.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git add .
+warning: LF will be replaced by CRLF in 1.txt.
+The file will have its original line endings in your working directory
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git commit -m "cmt 1.txt"
+[main a4ac02b] cmt 1.txt
+ 2 files changed, 2 insertions(+)
+ create mode 100644 backup.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git log --oneline
+a4ac02b (HEAD -> main) cmt 1.txt
+1c65785 cmt4
+56ae84d cmt3
+87333b2 cmt2
+f31708e cmt1
+5f67a30 i am getting my data again
+3b6bef9 i am deleting latest content
+47d6b0a commit3
+e9cea5e commit2
+676d260 commit1
+0e92546 edited file
+5e95d36 this is a empty file
+005306c i edit a.txt
+fe04d0a a.txt
+1640031 (b1) a.txt
+c722030 a.txt
+fde61eb c.txt
+4251924 b.txt
+c9ae31f a.txt
+1216c38 created 1.txt
+cc501d6 b1 file
+e698ca5 i created abc.txt
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git push -u origin main
+To https://github.com/vinayvikas/devrepo.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/vinayvikas/devrepo.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git merge origin/main
+Merge made by the 'recursive' strategy.
+ w1 | 1 +
+ 1 file changed, 1 insertion(+)
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ cat w1
+hi
+hru
+wlcm
+vinay
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git push -u origin main
+Enumerating objects: 10, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 551 bytes | 183.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/vinayvikas/devrepo.git
+   70eac47..cdb5a35  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git tag v1.0
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git tag
+v1.0
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git push -u origin v1.0
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/vinayvikas/devrepo.git
+ * [new tag]         v1.0 -> v1.0
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ ls
+1.txt  123.txt  a.txt  abc.txt  b.txt  backup.txt  branch1.txt  c.txt  q1  w1
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (main)
+$ git checkout b1
+Switched to branch 'b1'
+
+vinayvikas@LAPTOP-5C8IU0MH MINGW64 ~/devrepo (b1)
+$ ls
+1.txt  a.txt  abc.txt  branch1.txt.

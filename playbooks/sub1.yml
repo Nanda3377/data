@@ -1,2 +1,0 @@
-- name: creating file
-  file: path=/opt/x.txt state=touch

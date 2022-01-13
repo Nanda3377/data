@@ -1,0 +1,44 @@
+alternatives --install /usr/bin/java java /opt/jdk1.8.0_311/bin/java 2
+alternatives --config java
+          << for installing >>
+
+export JAVA_HOME=/opt/jdk1.8.0_311
+export JRE_HOME=/opt/jdk1.8.0_311/jre
+export PATH=$PATH:/opt/jdk1.8.0_311/bin:/opt/jdk1.8.0_311/jre/bin
+        <<creating path for java in /etc/profile.d
+            create new file java.sh and enter above data and source java.sh command>> 
+
+
+
+export MAVEN_HOME=/opt/apache-maven-3.5.3
+export PATH=$PATH:/opt/apache-maven-3.5.3/bin
+
+ <<creating path for maven in /etc/profile.d
+            create new file maven.sh and enter above data and source maven.sh command>>
+
+
+plugins for autodeploy
+
+<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+
+    <role rolename="manager-gui"/>
+    <role rolename="manager-script"/>
+    <user username="admin" password="password" roles="manager-gui,manager-script" />
+
+</tomcat-users>
+<server>
+            <id>TomcatServer</id>
+            <username>admin</username>
+            <password>password</password>
+        </server>
+<plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+            <url>http://localhost:8080/manager/text</url>
+            <server>TomcatServer</server>
+            <path>/mkyongWebApp</path>
+        </configuration>
+    </plugin>

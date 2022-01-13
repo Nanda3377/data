@@ -1,0 +1,25 @@
+pipeline 
+{
+
+agent any 
+
+stages{
+stage ( "checkout brancjhes"_)
+
+steps
+{
+
+branches: 
+checkout ( [ $class = 'GitScm"
+
+scm.branches
+userRemoteConfigs: [ credentialsID : git , url: htt[ps:hgvshgsdh
+
+
+]
+)
+}
+}
+}
+
+ 

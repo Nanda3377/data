@@ -1,0 +1,218 @@
+login as: ec2-user
+Authenticating with public key "imported-openssh-key"
+[ec2-user@ip-172-31-29-159 ~]$ sudo -i
+[root@ip-172-31-29-159 ~]# mkdir /1dir
+[root@ip-172-31-29-159 ~]# useradd nanda
+[root@ip-172-31-29-159 ~]# passwd nanda
+Changing password for user nanda.
+New password:
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[root@ip-172-31-29-159 ~]# su nanda
+[nanda@ip-172-31-29-159 root]$ cd
+[nanda@ip-172-31-29-159 ~]$ pwd
+/home/nanda
+[nanda@ip-172-31-29-159 ~]$ la -la root
+bash: la: command not found
+[nanda@ip-172-31-29-159 ~]$ ls -la root
+ls: cannot access 'root': No such file or directory
+[nanda@ip-172-31-29-159 ~]$ cat /etc/group |grep wheel
+wheel:x:10:
+[nanda@ip-172-31-29-159 ~]$ exit
+exit
+[root@ip-172-31-29-159 ~]# usermod -aG wheel nanda
+[root@ip-172-31-29-159 ~]# cat /etc/group |grep wheel
+wheel:x:10:nanda
+[root@ip-172-31-29-159 ~]# cat /etc/group |grep nanda
+wheel:x:10:nanda
+nanda:x:1001:
+[root@ip-172-31-29-159 ~]# su nanda
+[nanda@ip-172-31-29-159 root]$ cd
+[nanda@ip-172-31-29-159 ~]$ ls -la root
+ls: cannot access 'root': No such file or directory
+[nanda@ip-172-31-29-159 ~]$ sudo ls -la root
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for nanda:
+ls: cannot access 'root': No such file or directory
+[nanda@ip-172-31-29-159 ~]$ sudo ls -la root
+ls: cannot access 'root': No such file or directory
+[nanda@ip-172-31-29-159 ~]$ sudo ls -la /root
+total 36
+dr-xr-x---.  3 root root  149 Oct 30 02:28 .
+dr-xr-xr-x. 19 root root  248 Oct 30 02:34 ..
+-rw-------.  1 root root 6953 May  4 17:33 anaconda-ks.cfg
+-rw-r--r--.  1 root root   18 Aug 12  2018 .bash_logout
+-rw-r--r--.  1 root root  176 Aug 12  2018 .bash_profile
+-rw-r--r--.  1 root root  176 Aug 12  2018 .bashrc
+-rw-r--r--.  1 root root  100 Aug 12  2018 .cshrc
+-rw-------.  1 root root 6699 May  4 17:33 original-ks.cfg
+drwx------.  2 root root   29 Oct 30 02:28 .ssh
+-rw-r--r--.  1 root root  129 Aug 12  2018 .tcshrc
+[nanda@ip-172-31-29-159 ~]$ exit
+exit
+[root@ip-172-31-29-159 ~]# useradd kishore
+[root@ip-172-31-29-159 ~]# passwd kishore
+Changing password for user kishore.
+New password:
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[root@ip-172-31-29-159 ~]# su kishore
+[kishore@ip-172-31-29-159 root]$ cd
+[kishore@ip-172-31-29-159 ~]$ mkdir 1dir
+[kishore@ip-172-31-29-159 ~]$ touch 1file
+[kishore@ip-172-31-29-159 ~]$ ls -la
+total 12
+drwx------. 3 kishore kishore  87 Oct 30 03:12 .
+drwxr-xr-x. 5 root    root     50 Oct 30 03:10 ..
+drwxrwxr-x. 2 kishore kishore   6 Oct 30 03:11 1dir
+-rw-rw-r--. 1 kishore kishore   0 Oct 30 03:12 1file
+-rw-r--r--. 1 kishore kishore  18 Apr 21  2021 .bash_logout
+-rw-r--r--. 1 kishore kishore 141 Apr 21  2021 .bash_profile
+-rw-r--r--. 1 kishore kishore 376 Apr 21  2021 .bashrc
+[kishore@ip-172-31-29-159 ~]$ exit
+exit
+[root@ip-172-31-29-159 ~]# useradd nan
+[root@ip-172-31-29-159 ~]# passwd nan
+Changing password for user nan.
+New password:
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[root@ip-172-31-29-159 ~]# chown -r nan:nan /home/1file
+chown: invalid option -- 'r'
+Try 'chown --help' for more information.
+[root@ip-172-31-29-159 ~]# chown -R nan:nan /home/1file
+chown: cannot access '/home/1file': No such file or directory
+[root@ip-172-31-29-159 ~]# chown -R nan:nan /home/kishore/1file
+[root@ip-172-31-29-159 ~]# ls -la /home/kishore
+total 16
+drwx------. 3 kishore kishore 108 Oct 30 03:13 .
+drwxr-xr-x. 6 root    root     61 Oct 30 03:13 ..
+drwxrwxr-x. 2 kishore kishore   6 Oct 30 03:11 1dir
+-rw-rw-r--. 1 nan     nan       0 Oct 30 03:12 1file
+-rw-------. 1 kishore kishore  40 Oct 30 03:13 .bash_history
+-rw-r--r--. 1 kishore kishore  18 Apr 21  2021 .bash_logout
+-rw-r--r--. 1 kishore kishore 141 Apr 21  2021 .bash_profile
+-rw-r--r--. 1 kishore kishore 376 Apr 21  2021 .bashrc
+[root@ip-172-31-29-159 ~]# su nan
+[nan@ip-172-31-29-159 root]$ cd
+[nan@ip-172-31-29-159 ~]$ sudo cat /home/kishore/1file
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for nan:
+nan is not in the sudoers file.  This incident will be reported.
+[nan@ip-172-31-29-159 ~]$ exit
+exit
+[root@ip-172-31-29-159 ~]# ls -la /etc | grep .bash*
+[root@ip-172-31-29-159 ~]# ls -la | grep .bash*
+[root@ip-172-31-29-159 ~]# find / -name .bash*
+find: paths must precede expression: .bash_profile
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]
+[root@ip-172-31-29-159 ~]# cd /etc/ssh
+[root@ip-172-31-29-159 ssh]# vi sshd_config
+[root@ip-172-31-29-159 ssh]# service sshd restart
+Redirecting to /bin/systemctl restart sshd.service
+[root@ip-172-31-29-159 ssh]# cd
+[root@ip-172-31-29-159 ~]# mkdir abc
+[root@ip-172-31-29-159 ~]# cd /opt/
+[root@ip-172-31-29-159 opt]# mkdir jjj
+[root@ip-172-31-29-159 opt]# ln -s /opt/jjj/ /root/abc/
+[root@ip-172-31-29-159 opt]# ls -la
+total 0
+drwxr-xr-x.  3 root root  17 Oct 30 03:39 .
+dr-xr-xr-x. 19 root root 248 Oct 30 02:34 ..
+drwxr-xr-x.  2 root root   6 Oct 30 03:39 jjj
+[root@ip-172-31-29-159 opt]# cd
+[root@ip-172-31-29-159 ~]# cd /root/
+[root@ip-172-31-29-159 ~]# ls
+abc  anaconda-ks.cfg  original-ks.cfg
+[root@ip-172-31-29-159 ~]# cd abc/jjj/cd
+-bash: cd: abc/jjj/cd: No such file or directory
+[root@ip-172-31-29-159 ~]# cd /ptc
+-bash: cd: /ptc: No such file or directory
+[root@ip-172-31-29-159 ~]# ls
+abc  anaconda-ks.cfg  original-ks.cfg
+[root@ip-172-31-29-159 ~]# cd /
+[root@ip-172-31-29-159 /]# ls
+1dir  bin  boot  data  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-29-159 /]# cd /opt
+[root@ip-172-31-29-159 opt]# history
+    1  mkdir /1dir
+    2  useradd nanda
+    3  passwd nanda
+    4  su nanda
+    5  usermod -aG wheel nanda
+    6  cat /etc/group |grep wheel
+    7  cat /etc/group |grep nanda
+    8  su nanda
+    9  useradd kishore
+   10  passwd kishore
+   11  su kishore
+   12  useradd nan
+   13  passwd nan
+   14  chown -r nan:nan /home/1file
+   15  chown -R nan:nan /home/1file
+   16  chown -R nan:nan /home/kishore/1file
+   17  ls -la /home/kishore
+   18  su nan
+   19  ls -la /etc | grep .bash*
+   20  ls -la | grep .bash*
+   21  find / -name .bash*
+   22  cd /etc/ssh
+   23  vi sshd_config
+   24  service sshd restart
+   25  cd
+   26  mkdir abc
+   27  cd /opt/
+   28  mkdir jjj
+   29  ln -s /opt/jjj/ /root/abc/
+   30  ls -la
+   31  cd
+   32  cd /root/
+   33  ls
+   34  cd abc/jjj/cd
+   35  cd /ptc
+   36  ls
+   37  cd /
+   38  ls
+   39  cd /opt
+   40  history
+[root@ip-172-31-29-159 opt]# ^C
+[root@ip-172-31-29-159 opt]# mkdir nn
+[root@ip-172-31-29-159 opt]# ls
+jjj  nn
+[root@ip-172-31-29-159 opt]# cd /root
+[root@ip-172-31-29-159 ~]# ls
+abc  anaconda-ks.cfg  original-ks.cfg
+[root@ip-172-31-29-159 ~]# cd /opt
+[root@ip-172-31-29-159 opt]# ln -s nm /root
+[root@ip-172-31-29-159 opt]# ls
+jjj  nn
+[root@ip-172-31-29-159 opt]# ls /root
+abc  anaconda-ks.cfg  nm  original-ks.cfg
+[root@ip-172-31-29-159 opt]# cd
+[root@ip-172-31-29-159 ~]# ls
+abc  anaconda-ks.cfg  nm  original-ks.cfg
+[root@ip-172-31-29-159 ~]# cd abc
+[root@ip-172-31-29-159 abc]# ls
+jjj
+[root@ip-172-31-29-159 abc]# ln -s /opt/nn /root/abc
+[root@ip-172-31-29-159 abc]# ls
+jjj  nn
+[root@ip-172-31-29-159 abc]# cd nn
+[root@ip-172-31-29-159 nn]#

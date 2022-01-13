@@ -1,0 +1,263 @@
+download java 8 from online www.orcle.com for 
+and then move java8 from windows to linux by using WINscp. 
+enter the ip and user ec2-user
+it come under home/ec2-user
+
+
+
+[root@ip-172-31-42-144 opt]# ls
+aws  jdk1.8.0_311  rh
+[root@ip-172-31-42-144 opt]# cd jdk1.8.0_311/
+[root@ip-172-31-42-144 jdk1.8.0_311]# alternatives --install /usr/bin/java java /opt/jdk1.8.0_311/bin/java 2
+
+
+[root@ip-172-31-42-144 jdk1.8.0_311]# alternatives --config java
+
+There is 1 program that provides 'java'.
+
+  Selection    Command
+-----------------------------------------------
+*+ 1           /opt/jdk1.8.0_311/bin/java
+
+Enter to keep the current selection[+], or type selection number: 1
+[root@ip-172-31-42-144 jdk1.8.0_311]# java -version
+java version "1.8.0_311"
+Java(TM) SE Runtime Environment (build 1.8.0_311-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.311-b11, mixed mode)
+[root@ip-172-31-42-144 jdk1.8.0_311]# cd /etc/profile.d
+[root@ip-172-31-42-144 profile.d]# ll
+total 68
+-rw-r--r-- 1 root root  771 Oct  2  2019 256term.csh
+-rw-r--r-- 1 root root  841 Oct  2  2019 256term.sh
+-rw-r--r-- 1 root root  660 Oct 18  2017 bash_completion.sh
+-rw-r--r-- 1 root root  196 Jul 31  2018 colorgrep.csh
+-rw-r--r-- 1 root root  201 Jul 31  2018 colorgrep.sh
+-rw-r--r-- 1 root root 1741 Jan 23  2020 colorls.csh
+-rw-r--r-- 1 root root 1606 Jan 23  2020 colorls.sh
+-rw-r--r-- 1 root root   80 Feb 21  2020 csh.local
+-rw-r--r-- 1 root root 1706 Oct  2  2019 lang.csh
+-rw-r--r-- 1 root root 2703 Oct  2  2019 lang.sh
+-rw-r--r-- 1 root root  123 Jul 31  2018 less.csh
+-rw-r--r-- 1 root root  121 Jul 31  2018 less.sh
+-rw-r--r-- 1 root root   81 Feb 21  2020 sh.local
+-rw-r--r-- 1 root root  106 Jul 17  2019 vim.csh
+-rw-r--r-- 1 root root  248 Jul 17  2019 vim.sh
+-rw-r--r-- 1 root root  164 Aug  1  2018 which2.csh
+-rw-r--r-- 1 root root  169 Aug  1  2018 which2.sh
+[root@ip-172-31-42-144 profile.d]# touch java.sh
+[root@ip-172-31-42-144 profile.d]# ls
+256term.csh  bash_completion.sh  colorgrep.sh  colorls.sh  java.sh   lang.sh   less.sh   vim.csh  which2.csh
+256term.sh   colorgrep.csh       colorls.csh   csh.local   lang.csh  less.csh  sh.local  vim.sh   which2.sh
+[root@ip-172-31-42-144 profile.d]# vi java.sh
+[root@ip-172-31-42-144 profile.d]# surya = gamer
+-bash: surya: command not found
+[root@ip-172-31-42-144 profile.d]# surya=gamer
+[root@ip-172-31-42-144 profile.d]# echo $surya
+gamer
+[root@ip-172-31-42-144 profile.d]# ls
+256term.csh  bash_completion.sh  colorgrep.sh  colorls.sh  java.sh   lang.sh   less.sh   vim.csh  which2.csh
+256term.sh   colorgrep.csh       colorls.csh   csh.local   lang.csh  less.csh  sh.local  vim.sh   which2.sh
+[root@ip-172-31-42-144 profile.d]# echo JAVA_HOME
+JAVA_HOME
+[root@ip-172-31-42-144 profile.d]# echo $JAVA_HOME
+
+[root@ip-172-31-42-144 profile.d]# source java.sh
+[root@ip-172-31-42-144 profile.d]# echo $JAVA_HOME
+/opt/jdk1.8.0_311
+[root@ip-172-31-42-144 profile.d]# cd /opt
+[root@ip-172-31-42-144 opt]# yum install wget
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                                                      | 3.7 kB  00:00:00
+Package wget-1.14-18.amzn2.1.x86_64 already installed and latest version
+Nothing to do
+[root@ip-172-31-42-144 opt]# wget https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+--2021-11-17 03:13:22--  https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+Resolving archive.apache.org (archive.apache.org)... 138.201.131.134, 2a01:4f8:172:2ec5::2
+Connecting to archive.apache.org (archive.apache.org)|138.201.131.134|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8799579 (8.4M) [application/x-gzip]
+Saving to: ‘apache-maven-3.5.3-bin.tar.gz’
+
+100%[=============================================================================================>] 8,799,579   6.65MB/s   in 1.3s
+
+2021-11-17 03:13:24 (6.65 MB/s) - ‘apache-maven-3.5.3-bin.tar.gz’ saved [8799579/8799579]
+
+[root@ip-172-31-42-144 opt]# ls
+apache-maven-3.5.3-bin.tar.gz  aws  jdk1.8.0_311  rh
+[root@ip-172-31-42-144 opt]# tar -xvf apache-maven-3.5.3-bin.tar.gz
+apache-maven-3.5.3/README.txt
+apache-maven-3.5.3/LICENSE
+apache-maven-3.5.3/NOTICE
+apache-maven-3.5.3/lib/
+apache-maven-3.5.3/lib/cdi-api.license
+apache-maven-3.5.3/lib/commons-cli.license
+apache-maven-3.5.3/lib/commons-io.license
+apache-maven-3.5.3/lib/commons-lang3.license
+apache-maven-3.5.3/lib/jcl-over-slf4j.license
+apache-maven-3.5.3/lib/jsr250-api.license
+apache-maven-3.5.3/lib/maven-artifact.license
+apache-maven-3.5.3/lib/maven-builder-support.license
+apache-maven-3.5.3/lib/maven-compat.license
+apache-maven-3.5.3/lib/maven-core.license
+apache-maven-3.5.3/lib/maven-embedder.license
+apache-maven-3.5.3/lib/maven-model-builder.license
+apache-maven-3.5.3/lib/maven-model.license
+apache-maven-3.5.3/lib/maven-plugin-api.license
+apache-maven-3.5.3/lib/maven-repository-metadata.license
+apache-maven-3.5.3/lib/maven-resolver-api.license
+apache-maven-3.5.3/lib/maven-resolver-connector-basic.license
+apache-maven-3.5.3/lib/maven-resolver-impl.license
+apache-maven-3.5.3/lib/maven-resolver-provider.license
+apache-maven-3.5.3/lib/maven-resolver-spi.license
+apache-maven-3.5.3/lib/maven-resolver-transport-wagon.license
+apache-maven-3.5.3/lib/maven-resolver-util.license
+apache-maven-3.5.3/lib/maven-settings-builder.license
+apache-maven-3.5.3/lib/maven-settings.license
+apache-maven-3.5.3/lib/maven-shared-utils.license
+apache-maven-3.5.3/lib/maven-slf4j-provider.license
+apache-maven-3.5.3/lib/org.eclipse.sisu.inject.license
+apache-maven-3.5.3/lib/org.eclipse.sisu.plexus.license
+apache-maven-3.5.3/lib/plexus-cipher.license
+apache-maven-3.5.3/lib/plexus-component-annotations.license
+apache-maven-3.5.3/lib/plexus-interpolation.license
+apache-maven-3.5.3/lib/plexus-sec-dispatcher.license
+apache-maven-3.5.3/lib/plexus-utils.license
+apache-maven-3.5.3/lib/slf4j-api.license
+apache-maven-3.5.3/lib/wagon-file.license
+apache-maven-3.5.3/lib/wagon-http.license
+apache-maven-3.5.3/lib/wagon-provider-api.license
+apache-maven-3.5.3/lib/jansi-native/
+apache-maven-3.5.3/lib/jansi-native/freebsd32/
+apache-maven-3.5.3/lib/jansi-native/freebsd64/
+apache-maven-3.5.3/lib/jansi-native/linux32/
+apache-maven-3.5.3/lib/jansi-native/linux64/
+apache-maven-3.5.3/lib/jansi-native/osx/
+apache-maven-3.5.3/lib/jansi-native/windows32/
+apache-maven-3.5.3/lib/jansi-native/windows64/
+apache-maven-3.5.3/lib/jansi-native/freebsd32/libjansi.so
+apache-maven-3.5.3/lib/jansi-native/freebsd64/libjansi.so
+apache-maven-3.5.3/lib/jansi-native/linux32/libjansi.so
+apache-maven-3.5.3/lib/jansi-native/linux64/libjansi.so
+apache-maven-3.5.3/lib/jansi-native/osx/libjansi.jnilib
+apache-maven-3.5.3/lib/jansi-native/windows32/jansi.dll
+apache-maven-3.5.3/lib/jansi-native/windows64/jansi.dll
+apache-maven-3.5.3/bin/m2.conf
+apache-maven-3.5.3/bin/mvn.cmd
+apache-maven-3.5.3/bin/mvnDebug.cmd
+apache-maven-3.5.3/bin/mvn
+apache-maven-3.5.3/bin/mvnDebug
+apache-maven-3.5.3/bin/mvnyjp
+apache-maven-3.5.3/conf/
+apache-maven-3.5.3/conf/logging/
+apache-maven-3.5.3/conf/logging/simplelogger.properties
+apache-maven-3.5.3/conf/settings.xml
+apache-maven-3.5.3/conf/toolchains.xml
+apache-maven-3.5.3/lib/ext/
+apache-maven-3.5.3/lib/jansi-native/
+apache-maven-3.5.3/lib/ext/README.txt
+apache-maven-3.5.3/lib/jansi-native/README.txt
+apache-maven-3.5.3/boot/plexus-classworlds-2.5.2.jar
+apache-maven-3.5.3/lib/maven-embedder-3.5.3.jar
+apache-maven-3.5.3/lib/maven-settings-3.5.3.jar
+apache-maven-3.5.3/lib/plexus-utils-3.1.0.jar
+apache-maven-3.5.3/lib/maven-settings-builder-3.5.3.jar
+apache-maven-3.5.3/lib/maven-builder-support-3.5.3.jar
+apache-maven-3.5.3/lib/commons-lang3-3.5.jar
+apache-maven-3.5.3/lib/plexus-interpolation-1.24.jar
+apache-maven-3.5.3/lib/plexus-component-annotations-1.7.1.jar
+apache-maven-3.5.3/lib/plexus-sec-dispatcher-1.4.jar
+apache-maven-3.5.3/lib/plexus-cipher-1.7.jar
+apache-maven-3.5.3/lib/maven-core-3.5.3.jar
+apache-maven-3.5.3/lib/maven-model-3.5.3.jar
+apache-maven-3.5.3/lib/maven-repository-metadata-3.5.3.jar
+apache-maven-3.5.3/lib/maven-artifact-3.5.3.jar
+apache-maven-3.5.3/lib/maven-plugin-api-3.5.3.jar
+apache-maven-3.5.3/lib/org.eclipse.sisu.plexus-0.3.3.jar
+apache-maven-3.5.3/lib/cdi-api-1.0.jar
+apache-maven-3.5.3/lib/jsr250-api-1.0.jar
+apache-maven-3.5.3/lib/javax.inject-1.jar
+apache-maven-3.5.3/lib/org.eclipse.sisu.inject-0.3.3.jar
+apache-maven-3.5.3/lib/maven-model-builder-3.5.3.jar
+apache-maven-3.5.3/lib/guava-20.0.jar
+apache-maven-3.5.3/lib/maven-resolver-provider-3.5.3.jar
+apache-maven-3.5.3/lib/maven-resolver-api-1.1.1.jar
+apache-maven-3.5.3/lib/maven-resolver-spi-1.1.1.jar
+apache-maven-3.5.3/lib/maven-resolver-util-1.1.1.jar
+apache-maven-3.5.3/lib/maven-resolver-impl-1.1.1.jar
+apache-maven-3.5.3/lib/maven-shared-utils-3.2.1.jar
+apache-maven-3.5.3/lib/commons-io-2.5.jar
+apache-maven-3.5.3/lib/guice-4.0-no_aop.jar
+apache-maven-3.5.3/lib/aopalliance-1.0.jar
+apache-maven-3.5.3/lib/slf4j-api-1.7.25.jar
+apache-maven-3.5.3/lib/commons-cli-1.4.jar
+apache-maven-3.5.3/lib/maven-compat-3.5.3.jar
+apache-maven-3.5.3/lib/wagon-provider-api-3.0.0.jar
+apache-maven-3.5.3/lib/wagon-http-3.0.0-shaded.jar
+apache-maven-3.5.3/lib/jcl-over-slf4j-1.7.25.jar
+apache-maven-3.5.3/lib/wagon-file-3.0.0.jar
+apache-maven-3.5.3/lib/maven-resolver-connector-basic-1.1.1.jar
+apache-maven-3.5.3/lib/maven-resolver-transport-wagon-1.1.1.jar
+apache-maven-3.5.3/lib/maven-slf4j-provider-3.5.3.jar
+apache-maven-3.5.3/lib/jansi-1.17.jar
+[root@ip-172-31-42-144 opt]# ls
+apache-maven-3.5.3  apache-maven-3.5.3-bin.tar.gz  aws  jdk1.8.0_311  rh
+[root@ip-172-31-42-144 opt]# rm -rf apache-maven-3.5.3-bin.tar.gz
+[root@ip-172-31-42-144 opt]# ls
+apache-maven-3.5.3  aws  jdk1.8.0_311  rh
+[root@ip-172-31-42-144 opt]# mvn -v
+-bash: mvn: command not found
+[root@ip-172-31-42-144 opt]# cd /etc/profile.d
+[root@ip-172-31-42-144 profile.d]# touch maven.sh
+[root@ip-172-31-42-144 profile.d]# vi maven.sh
+[root@ip-172-31-42-144 profile.d]# source maven.sh
+[root@ip-172-31-42-144 profile.d]# mvn -v
+Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-24T19:49:05Z)
+Maven home: /opt/apache-maven-3.5.3
+Java version: 1.8.0_311, vendor: Oracle Corporation
+Java home: /opt/jdk1.8.0_311/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "4.14.252-195.483.amzn2.x86_64", arch: "amd64", family: "unix"
+[root@ip-172-31-42-144 profile.d]# history
+    1  ls /home/ec2-user
+    2  mv /home/ec2-user/jdk-8u311-linux-x64.tar.gz /opt
+    3  cd /opt
+    4  ls
+    5  tar -xvf jdk-8u311-linux-x64.tar.gz
+    6  ls
+    7  rm -rf jdk-8u311-linux-x64.tar.gz
+    8  ls
+    9  clear
+   10  ls
+   11  cd jdk1.8.0_311/
+   12  alternatives --install /usr/bin/java java /opt/jdk1.8.0_311/bin/java 2
+   13  /usr/bin/java java /opt/jdk1.8.0_311/bin/java 2
+   14  clear
+   15  alternatives --config java
+   16  java -version
+   17  cd /etc/profile.d
+   18  ll
+   19  touch java.sh
+   20  ls
+   21  vi java.sh
+   22  surya = gamer
+   23  surya=gamer
+   24  echo $surya
+   25  ls
+   26  echo JAVA_HOME
+   27  echo $JAVA_HOME
+   28  source java.sh
+   29  echo $JAVA_HOME
+   30  cd /opt
+   31  yum install wget
+   32  wget https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+   33  ls
+   34  tar -xvf apache-maven-3.5.3-bin.tar.gz
+   35  ls
+   36  rm -rf apache-maven-3.5.3-bin.tar.gz
+   37  ls
+   38  mvn -v
+   39  cd /etc/profile.d
+   40  touch maven.sh
+   41  vi maven.sh
+   42  source maven.sh
+   43  mvn -v
