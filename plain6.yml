@@ -1,0 +1,10 @@
+---
+- hosts: my
+  connection: ssh
+  gather_facts: true
+  become_user: root
+  tasks: 
+    - name: templates
+      template: 
+        src: example.j2
+        dest: /opt/11.txt

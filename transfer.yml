@@ -1,0 +1,11 @@
+---
+- hosts: my
+  connection: ssh
+  gather_facts: true
+  become_user: root
+  tasks:
+    - copy:
+        src: /opt/playbooks/task.yml
+        dest: /opt
+
+

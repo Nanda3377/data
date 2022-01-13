@@ -1,0 +1,11 @@
+---
+- hosts: my
+  connection: ssh
+  gather_facts: true
+  become_user: root
+  tasks: 
+    - name: looping of items
+      file: path='{{ item }}' state=touch
+      with_items:
+        - /opt/my.txt
+        - /root/you.txt  

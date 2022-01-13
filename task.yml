@@ -1,0 +1,48 @@
+---
+- hosts: my
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  connection: ssh
+  gather_facts: true
+  become_user: root
+  tasks:
+    - name: install java in ubuntu
+      apt: name=openjdk-8-jdk state=present
+      when: ansible_os_family == "Debian"
+    - name: install java in redhat
+      yum: name=openjdk-8-jdk state=present
+      when: ansible_os_family == "Redhat"
+    - name: Set JAVA__HOME
+      file: path=/etc/profile.d/java.sh state=touch
+    - copy: 
+        content: |
+          export JAVA_HOME=/opt/java-8-openjdk-amd64
+        dest: /etc/profile.d/java.sh
+    - name: execute source
+      shell: source=/etc/profile.d/java.sh
+    - name: download apache maven
+      get_url: url=https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz dest=/opt
+    - name: untar maven
+      shell: tar -xvf /opt/apache-maven-3.5.3-bin.tar.gz -C /opt
+    - name: Set MAVEN_HOME 
+      file: path=/etc/profile.d/maven.sh state=touch
+    - copy:
+        content: |
+          export M2_HOME=/opt/apache-maven-3.5.3
+          export MAVEN_HOME=/opt/apache-maven-3.5.3
+          export PATH=${M2_HOME}/bin:${PATH}
+        dest: /etc/profile.d/maven.sh
+    - name: execute source
+      shell: source=/etc/profile.d/maven.sh 
+    - name: download apche tomcat
+      get_url: url=https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.3/bin/apache-tomcat-8.5.3.tar.gz dest=/opt
+    - name: untar apache tomcat
+      shell: tar -xvf /opt/apache-tomcat-8.5.3.tar.gz -C /opt
+      notify: restart tomcat server
+  handlers:
+    - name: restart tomcat server
+      shell: ./startup.sh 
+      args:
+        chdir:  /opt/apache-tomcat-8.5.3/bin
+    - name: download jenkins
+      get_url: url=https://get.jenkins.io/war-stable/2.319.1/jenkins.war dest=/opt/apache-tomcat-8.5.3/webapps
